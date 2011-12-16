@@ -1,0 +1,31 @@
+#! /usr/bin/env python
+# WAF build script for midori
+# This file is licensed under the terms of the expat license, see the file EXPAT.
+
+import platform
+
+obj = bld.new_task_gen ('cc', 'staticlib')
+obj.name = 'midori'
+obj.target = 'midori'
+obj.includes = '. ..'
+obj.find_sources_in_dirs ('.', excludes=['main.c'])
+obj.add_marshal_file ('marshal.list', 'midori_cclosure_marshal')
+obj.uselib = 'UNIQUE LIBSOUP LIBIDN GIO GTK SQLITE WEBKIT LIBXML HILDON'
+obj.uselib_local = 'katze'
+obj.install_path = None
+
+obj = bld.new_task_gen ('cc', 'staticlib')
+obj.name = 'panels'
+obj.target = 'panels'
+obj.includes = '. ..'
+obj.find_sources_in_dirs ('../panels')
+obj.uselib = 'UNIQUE LIBSOUP GMODULE GTHREAD GIO GTK SQLITE WEBKIT LIBXML'
+obj.uselib_local = 'midori'
+obj.install_path = None
+
+obj = bld.new_task_gen ('cc', 'program')
+obj.target = 'midori'
+obj.includes = '. .. ../panels'
+obj.source = 'main.c'
+obj.uselib = 'UNIQUE LIBSOUP GMODULE GTHREAD GIO GTK SQLITE WEBKIT LIBXML'
+obj.uselib_local = 'panels'

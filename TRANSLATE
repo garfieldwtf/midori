@@ -1,0 +1,41 @@
+This file is licensed under the terms of the expat license, see the file EXPAT.
+
++++ Translating Midori +++
+
+If you want to translate Midori, here are a few helpful tips.
+
+To update the localization template:
+
+./waf build --update-po
+
+If you want to add a new language 'aa', create it like this:
+
+cd po
+msginit -l aa_CC -o aa.po -i midori.pot
+sed -i 's/PACKAGE/midori/g' aa.po
+
+Make sure you add your language to the file po/LINGUAS.
+Just open the file with a text editor and add your code.
+
+To check your language 'aa' for errors, do this:
+
+msgfmt -c --check-accelerators=_ aa.po
+
+To test your changes, run Midori like so:
+
+./waf build --run
+
+This is a convenience command that will setup localization in
+the build folder so you don't need to install translations.
+
+To run Midori in a particular language, run it like this:
+
+LANG=fr_FR.utf8 ./waf build --run
+
+As a general rule, your localization should be based off of the
+current git repository or the latest midori.pot in git.
+
+Some strings have comments, starting with 'i18n', which are meant
+to describe the role of a string to translators.
+Please don't hesitate to ask for additional descriptive comments
+for any unclear strings that you are uncertain about.

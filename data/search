@@ -1,0 +1,27 @@
+[Yahoo]
+name=Yahoo
+text=Yahoo Search
+uri=http://results.myhpf.co.uk/resultsasia.asp?Keywords=%s&OrgID=280908&SearchID=60415682&mkt=my&type=GENERAL_280000to289999
+icon=
+token=g
+
+[Google]
+name=Google
+text=Web Search
+uri=http://www.google.com/search?q=%s
+icon=
+token=gg
+
+[Wikipedia]
+name=Wikipedia
+text=The free encyclopedia
+uri=http://en.wikipedia.org/wiki/%s
+icon=
+token=wp
+
+[TheFreeDictionary]
+name=The Free Dictionary
+text=Dictionary, Encyclopedia and Thesaurus
+uri=http://www.thefreedictionary.com/%s
+icon=
+token=fd
